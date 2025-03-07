@@ -48,7 +48,7 @@ CHIS2020 <- CHIS2020 %>%
     OMBSRR_P1 == 3 ~ "NH African American",              # NH African American
     OMBSRR_P1 == 5 ~ "NH Asian only",                    # NH Asian only
     OMBSRR_P1 %in% c(4, 6) ~ "Other or two/more races",  # Other or two/more races
-    TRUE ~ NA_character_  # This handles any other missing or invalid values
+    TRUE ~ NA_character_  
   )) %>%
   mutate(racecat = factor(racecat, levels = c("NH White", "NH African American", "NH Asian only", "Hispanic, any Race", "Other or two/more races")))  # Define the factor levels
 
@@ -58,7 +58,7 @@ CHIS2020 <- CHIS2020 %>%
     SREDUC == 2 ~ "High school or less",
     SREDUC == 3 ~ "Some college",
     SREDUC == 4 ~ "University degree or higher",
-    TRUE ~ NA_character_  # Handle missing values
+    TRUE ~ NA_character_  
   )) %>%
   mutate(educcat = factor(educcat, levels = c("High school or less", "Some college", "University degree or higher")))
 
