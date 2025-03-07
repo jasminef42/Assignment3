@@ -125,7 +125,7 @@ CHIS2020 <- CHIS2020 %>%
   mutate(Restlessbin = case_when(
     AJ31 < 5 ~ 1,  # 1 for Yes (restless)
     AJ31 == 5 ~ 0,  # 0 for No (not restless)
-    TRUE ~ NA_real_ # Handle cases where AJ31 is missing or out of range
+    TRUE ~ NA_real_ 
   ))%>%
   mutate(Restlessbin = factor(Restlessbin, levels = c(0, 1), labels = c("No restlessness", "Some restlessness")))
 
@@ -144,7 +144,7 @@ CHIS2020 <- CHIS2020 %>%
     AJ31 == "Not at all" ~ "No restlessness",  # No restlessness
     AJ31 == "A little of the time" ~ "Low",    # Low restlessness
     AJ31 %in% c("Some of the time", "Most of the time", "All of the time") ~ "High", # High restlessness
-    TRUE ~ NA_character_  # NA for other cases (missing data)
+    TRUE ~ NA_character_  
   ))
 
 CHIS2020 <- CHIS2020 %>%
@@ -159,7 +159,7 @@ CHIS2020 <- CHIS2020 %>%
   mutate(AC116bin = case_when(
     AC116_P1 == 1 ~ 1,  # Used marijuana in the past month
     AC116_P1 >= 2 & AC116_P1 <= 6 ~ 0,  # Used marijuana at some point in life
-    TRUE ~ NA_real_  # Handle any unexpected values
+    TRUE ~ NA_real_ 
   )) %>%
   mutate(AC116bin = factor(AC116bin, 
                            levels = c(0, 1), 
@@ -170,7 +170,7 @@ CHIS2020 <- CHIS2020 %>%
   mutate(MJ_MONTH = case_when(
     AC117V2 >= 1 & AC117V2 <= 7 ~ 1,  # 1 for Yes (marijuana use in past month)
     AC117V2 == -1 ~ 0,                 # 0 for No (no marijuana use)
-    TRUE ~ NA_real_                    # Handle other cases (missing or invalid)
+    TRUE ~ NA_real_               
   ))%>%
   mutate(MJ_MONTH = factor(MJ_MONTH, levels = c(0,1), labels = c("No", "Yes")))
 
